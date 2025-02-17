@@ -1,0 +1,39 @@
+{
+    "entry_point": "mdvrp_problem:MDVRPProblem",
+    "default_params": {
+      "instance_file": "instances/p01"
+    },
+    "problem_type": "Multi Depot Vehicle Routing Problem",
+    "description": "In the Multi Depot Vehicle Routing Problem (MDVRP), a fleet of trucks located at several depots must serve a set of customers with known demand and service time. Each depot has its own fleet of trucks with given route duration and load capacities, and each depot incurs a fixed opening cost if any truck departs from it. The objective is to assign each customer to exactly one truck (and hence one depot) and to design routes such that the total travel distance (augmented by a fixed route opening cost) and the depot opening costs are minimized, while respecting truck load and duration constraints.",
+    "keywords": [
+      "vehicle routing",
+      "multi depot",
+      "routing",
+      "depot selection",
+      "capacity"
+    ],
+    "data_format": {
+      "instance_file": {
+        "format": "A text file in Cordeau_2011 MDVRP format. The first line contains: data type, number of trucks per depot, number of customers, and number of depots. Next, one line per depot provides the route duration capacity and the truck load capacity. Then, one line per customer provides the customer id, X coordinate, Y coordinate, service time, and demand. Finally, one line per depot provides the depot id and its X and Y coordinates."
+      }
+    },
+    "decision_variables": {
+      "solution": {
+        "type": "dictionary",
+        "description": "A dictionary with key 'routes' mapping to a 2D list of size [nb_depots][nb_trucks_per_depot], where each element is a list of customer indices (0-indexed) representing the sequence of customers visited by that truck."
+      }
+    },
+    "objective": {
+      "type": "minimization",
+      "function": "Total Cost = Sum_{routes} (opening_route_cost + route_distance) + Sum_{depots used} opening_depot_cost",
+      "description": "Minimize the total cost, defined as the sum of the routing cost (which includes a fixed opening route cost plus the travel distance) over all trucks and the opening costs for depots that are used. The model must satisfy vehicle capacity and route duration constraints as well as ensuring every customer is served exactly once."
+    },
+    "solution_representation": "A dictionary with key 'routes' mapping to a 2D list of routes (one per depot and truck).",
+    "compatible_optimizers": [
+      "genetic_algorithm",
+      "simulated_annealing",
+      "particle_swarm",
+      "tabu_search"
+    ]
+  }
+  
