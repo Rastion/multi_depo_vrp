@@ -3,12 +3,15 @@
     "default_params": {
       "instance_file": "instances/p01"
     },
-    "problem_type": "Multi Depot Vehicle Routing Problem",
+    "creator": "Rastion",
+    "type": "problem",
+    "problem_name": "Multi depot vehicle routing problem",
     "description": "In the Multi Depot Vehicle Routing Problem (MDVRP), a fleet of trucks located at several depots must serve a set of customers with known demand and service time. Each depot has its own fleet of trucks with given route duration and load capacities, and each depot incurs a fixed opening cost if any truck departs from it. The objective is to assign each customer to exactly one truck (and hence one depot) and to design routes such that the total travel distance (augmented by a fixed route opening cost) and the depot opening costs are minimized, while respecting truck load and duration constraints.",
+    "link_to_dataset": "https://github.com/Rastion/multi_depo_vrp/blob/main/instances/p01",
     "keywords": [
       "vehicle routing",
       "multi depot",
-      "routing",
+      "route-optimization",
       "depot selection",
       "capacity"
     ],
@@ -29,11 +32,8 @@
       "description": "Minimize the total cost, defined as the sum of the routing cost (which includes a fixed opening route cost plus the travel distance) over all trucks and the opening costs for depots that are used. The model must satisfy vehicle capacity and route duration constraints as well as ensuring every customer is served exactly once."
     },
     "solution_representation": "A dictionary with key 'routes' mapping to a 2D list of routes (one per depot and truck).",
-    "compatible_optimizers": [
-      "genetic_algorithm",
-      "simulated_annealing",
-      "particle_swarm",
-      "tabu_search"
+    "formulations": [
+      ""
     ]
   }
   
